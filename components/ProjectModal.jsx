@@ -5,18 +5,30 @@ export default function ProjectModal({ project, onClose }) {
       onClick={onClose}
     >
       <div
-        className="bg-white p-8 rounded-lg max-w-3xl w-full"
+        className="bg-white p-8 rounded-lg max-w-3xl w-full relative"
         onClick={(e) => e.stopPropagation()}
       >
         <h2 className="text-2xl font-bold mb-4">{project.title}</h2>
-        <p className="text-gray-700 mb-4">{project.description}</p>
-        <div className="grid grid-cols-2 gap-4 mb-4">
+        <p className="text-gray-800 mb-4">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, earum
+          eos non velit delectus error vel officiis minima aut! Repudiandae hic
+          illo neque, mollitia sunt quisquam doloremque consequuntur harum, quae
+          aperiam iste ipsam nihil quo officiis accusamus sed veniam, in
+          possimus illum facere nulla. Culpa ullam voluptatem est, iure
+          doloribus nostrum eum nobis vel laboriosam ipsa dignissimos asperiores
+          excepturi aliquid facere illum saepe nisi ad, quidem sequi? Error,
+          commodi nulla ab voluptatibus fugit eius molestiae praesentium!
+          Reiciendis dignissimos nulla excepturi quis quisquam libero modi iste
+          repellendus assumenda architecto repellat dolor at suscipit aliquam ad
+          voluptatem, asperiores expedita esse, eos itaque?
+        </p>
+        <div className="flex overflow-x-auto space-x-4 mb-4">
           {project.images.map((img, index) => (
             <img
               key={index}
               src={img}
-              alt={`Project image ${index + 1}`}
-              className="w-full h-48 object-cover rounded"
+              alt={`${project.title} screenshot ${index + 1}`}
+              className="w-64 h-48 object-cover rounded"
             />
           ))}
         </div>
@@ -31,7 +43,7 @@ export default function ProjectModal({ project, onClose }) {
           </a>
           <button
             onClick={onClose}
-            className="bg-gray-300 text-gray-700 py-2 px-4 rounded hover:bg-gray-400"
+            className="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600"
           >
             Close
           </button>

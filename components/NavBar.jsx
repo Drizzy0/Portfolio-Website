@@ -7,17 +7,19 @@ export default function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 bg-gray-800 p-4">
+    <nav className="fixed top-0 left-0 w-full z-50 bg-gray-900 p-4">
       <div className="container mx-auto flex justify-between items-center">
         <div className="text-white text-xl font-bold vibrate-on-hover">
           Itoya Eromosele
         </div>
+
         <div className="hidden md:flex space-x-4">
           <Link
             to="about"
             spy={true}
             smooth={true}
             duration={500}
+            offset={-80}
             className="text-gray-300 hover:text-white cursor-pointer vibrate-on-hover"
             activeClass="text-white font-bold"
           >
@@ -28,6 +30,7 @@ export default function NavBar() {
             spy={true}
             smooth={true}
             duration={500}
+            offset={-80}
             className="text-gray-300 hover:text-white cursor-pointer vibrate-on-hover"
             activeClass="text-white font-bold"
           >
@@ -38,6 +41,7 @@ export default function NavBar() {
             spy={true}
             smooth={true}
             duration={500}
+            offset={-80}
             className="text-gray-300 hover:text-white cursor-pointer vibrate-on-hover"
             activeClass="text-white font-bold"
           >
@@ -62,6 +66,7 @@ export default function NavBar() {
           {isOpen ? <X className="w-8 h-8" /> : <Menu className="w-6 h-6" />}
         </button>
       </div>
+
       {isOpen && (
         <div className="md:hidden bg-gray-800 border-t border-gray-700">
           <div className="flex flex-col items-center py-4">
@@ -70,6 +75,7 @@ export default function NavBar() {
               spy={true}
               smooth={true}
               duration={500}
+              offset={-80}
               className="text-gray-300 hover:text-white py-2 vibrate-on-hover"
               activeClass="text-white font-bold"
               onClick={() => setIsOpen(false)}
@@ -81,6 +87,7 @@ export default function NavBar() {
               spy={true}
               smooth={true}
               duration={500}
+              offset={-80}
               className="text-gray-300 hover:text-white py-2 vibrate-on-hover"
               activeClass="text-white font-bold"
               onClick={() => setIsOpen(false)}
@@ -92,6 +99,7 @@ export default function NavBar() {
               spy={true}
               smooth={true}
               duration={500}
+              offset={-80}
               className="text-gray-300 hover:text-white py-2 vibrate-on-hover"
               activeClass="text-white font-bold"
               onClick={() => setIsOpen(false)}

@@ -1,26 +1,24 @@
 "use client";
-import { Eye } from "lucide-react";
 import { useState } from "react";
+import ProjectCard from "./ProjectCard";
 import ProjectModal from "./ProjectModal";
 
 export default function Portfolio() {
   const [selectedProject, setSelectedProject] = useState(null);
+  const [filter, setFilter] = useState("all");
 
   const projects = [
     {
       title: "Project One",
-      description: "A brief description of your first project.",
+      description: "A responsive website built with React and Tailwind CSS.",
       thumbnail: "https://via.placeholder.com/400x200",
-      images: [
-        "https://via.placeholder.com/600x400",
-        "https://via.placeholder.com/600x400",
-      ],
+      images: ["https://via.placeholder.com/600x400"],
       liveUrl: "https://project-one.com",
       isWebsite: true,
     },
     {
       title: "Project Two",
-      description: "A brief description of your second project.",
+      description: "A mobile app for task management using React Native.",
       thumbnail: "https://via.placeholder.com/400x200",
       images: ["https://via.placeholder.com/600x400"],
       liveUrl: "/apks/project-two.apk",
@@ -28,7 +26,7 @@ export default function Portfolio() {
     },
     {
       title: "Project Three",
-      description: "A brief description of your third project.",
+      description: "An e-commerce site with Next.js and Stripe integration.",
       thumbnail: "https://via.placeholder.com/400x200",
       images: ["https://via.placeholder.com/600x400"],
       liveUrl: "https://project-three.com",
@@ -36,7 +34,7 @@ export default function Portfolio() {
     },
     {
       title: "Project Four",
-      description: "A brief description of your fourth project.",
+      description: "A fitness tracking app built with Flutter.",
       thumbnail: "https://via.placeholder.com/400x200",
       images: ["https://via.placeholder.com/600x400"],
       liveUrl: "/apks/project-four.apk",
@@ -44,7 +42,7 @@ export default function Portfolio() {
     },
     {
       title: "Project Five",
-      description: "A brief description of your fifth project.",
+      description: "A blog platform using Next.js and Markdown.",
       thumbnail: "https://via.placeholder.com/400x200",
       images: ["https://via.placeholder.com/600x400"],
       liveUrl: "https://project-five.com",
@@ -52,7 +50,7 @@ export default function Portfolio() {
     },
     {
       title: "Project Six",
-      description: "A brief description of your sixth project.",
+      description: "A weather app with real-time API data.",
       thumbnail: "https://via.placeholder.com/400x200",
       images: ["https://via.placeholder.com/600x400"],
       liveUrl: "/apks/project-six.apk",
@@ -60,31 +58,50 @@ export default function Portfolio() {
     },
   ];
 
+  const filteredProjects =
+    filter === "all"
+      ? projects
+      : projects.filter(
+          (project) => project.isWebsite === (filter === "website")
+        );
+
   return (
     <section id="portfolio" className="bg-gray-100 py-16">
       <div className="container mx-auto">
         <h2 className="text-3xl font-bold mb-8 text-center">My Projects</h2>
+        <div className="flex justify-center mb-8">
+          <button
+            onClick={() => setFilter("all")}
+            className={`px-4 py-2 rounded ${
+              filter === "all" ? "bg-blue-500 text-white" : "bg-gray-200"
+            }`}
+          >
+            All
+          </button>
+          <button
+            onClick={() => setFilter("website")}
+            className={`px-4 py-2 rounded ml-2 ${
+              filter === "website" ? "bg-blue-500 text-white" : "bg-gray-200"
+            }`}
+          >
+            Websites
+          </button>
+          <button
+            onClick={() => setFilter("mobile")}
+            className={`px-4 py-2 rounded ml-2 ${
+              filter === "mobile" ? "bg-blue-500 text-white" : "bg-gray-200"
+            }`}
+          >
+            Mobile Apps
+          </button>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {projects.map((project, index) => (
-            <div
+          {filteredProjects.map((project, index) => (
+            <ProjectCard
               key={index}
-              className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow"
-            >
-              <img
-                src={project.thumbnail}
-                alt={project.title}
-                className="w-full h-48 object-cover mb-4"
-              />
-              <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-              <p className="text-gray-700 mb-4">{project.description}</p>
-              <button
-                onClick={() => setSelectedProject(project)}
-                className="flex items-center space-x-2 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition-transform transform hover:scale-105"
-              >
-                <span>View</span>
-                <Eye className="w-5 h-5" />
-              </button>
-            </div>
+              project={project}
+              onViewClick={setSelectedProject}
+            />
           ))}
         </div>
       </div>

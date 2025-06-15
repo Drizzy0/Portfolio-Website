@@ -10,10 +10,10 @@ export default function Home() {
   return (
     <>
       <NavBar />
-      <Hero />
-      <About />
-      <Skills />
-      <Portfolio />
+      <Hero className="fade-in" />
+      <About className="fade-in delay-1" />
+      <Skills className="fade-in delay-2" />
+      <Portfolio className="fade-in delay-3" />
       <Contact />
       <Footer />
     </>
