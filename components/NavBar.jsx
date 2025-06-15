@@ -9,14 +9,16 @@ export default function NavBar() {
   return (
     <nav className="fixed top-0 left-0 w-full z-50 bg-gray-800 p-4">
       <div className="container mx-auto flex justify-between items-center">
-        <div className="text-white text-xl font-bold">Itoya Eromosele</div>
+        <div className="text-white text-xl font-bold vibrate-on-hover">
+          Itoya Eromosele
+        </div>
         <div className="hidden md:flex space-x-4">
           <Link
             to="about"
             spy={true}
             smooth={true}
             duration={500}
-            className="text-gray-300 hover:text-white cursor-pointer"
+            className="text-gray-300 hover:text-white cursor-pointer vibrate-on-hover"
             activeClass="text-white font-bold"
           >
             About
@@ -26,7 +28,7 @@ export default function NavBar() {
             spy={true}
             smooth={true}
             duration={500}
-            className="text-gray-300 hover:text-white cursor-pointer"
+            className="text-gray-300 hover:text-white cursor-pointer vibrate-on-hover"
             activeClass="text-white font-bold"
           >
             Skills
@@ -36,7 +38,7 @@ export default function NavBar() {
             spy={true}
             smooth={true}
             duration={500}
-            className="text-gray-300 hover:text-white cursor-pointer"
+            className="text-gray-300 hover:text-white cursor-pointer vibrate-on-hover"
             activeClass="text-white font-bold"
           >
             Portfolio
@@ -46,7 +48,8 @@ export default function NavBar() {
             spy={true}
             smooth={true}
             duration={500}
-            className="text-gray-300 hover:text-white cursor-pointer"
+            offset={-80}
+            className="text-gray-300 hover:text-white cursor-pointer vibrate-on-hover"
             activeClass="text-white font-bold"
           >
             Contact
@@ -67,7 +70,7 @@ export default function NavBar() {
               spy={true}
               smooth={true}
               duration={500}
-              className="text-gray-300 hover:text-white py-2"
+              className="text-gray-300 hover:text-white py-2 vibrate-on-hover"
               activeClass="text-white font-bold"
               onClick={() => setIsOpen(false)}
             >
@@ -78,7 +81,7 @@ export default function NavBar() {
               spy={true}
               smooth={true}
               duration={500}
-              className="text-gray-300 hover:text-white py-2"
+              className="text-gray-300 hover:text-white py-2 vibrate-on-hover"
               activeClass="text-white font-bold"
               onClick={() => setIsOpen(false)}
             >
@@ -89,7 +92,7 @@ export default function NavBar() {
               spy={true}
               smooth={true}
               duration={500}
-              className="text-gray-300 hover:text-white py-2"
+              className="text-gray-300 hover:text-white py-2 vibrate-on-hover"
               activeClass="text-white font-bold"
               onClick={() => setIsOpen(false)}
             >
@@ -100,7 +103,8 @@ export default function NavBar() {
               spy={true}
               smooth={true}
               duration={500}
-              className="text-gray-300 hover:text-white py-2"
+              offset={-80}
+              className="text-gray-300 hover:text-white py-2 vibrate-on-hover"
               activeClass="text-white font-bold"
               onClick={() => setIsOpen(false)}
             >
