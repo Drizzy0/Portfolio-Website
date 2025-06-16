@@ -7,23 +7,45 @@ export default function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 bg-gray-900 p-4">
+    <nav className="sticky top-0 left-0 w-full z-50 bg-white p-6 shadow">
       <div className="container mx-auto flex justify-between items-center">
-        <div className="text-white text-xl font-bold vibrate-on-hover">
-          Itoya Eromosele
+        <div className="text-teal-500 text-xl font-bold vibrate-on-hover">
+          Itoya <span className="text-gray-900">Eromosele</span>
         </div>
 
-        <div className="hidden md:flex space-x-4">
+        <div className="hidden md:flex space-x-6 items-center">
+          <Link
+            to="home"
+            spy={true}
+            smooth={true}
+            duration={500}
+            offset={0}
+            className="text-gray-900 hover:text-teal-500 cursor-pointer font-semibold"
+            activeClass="text-teal-500 font-bold"
+          >
+            Home
+          </Link>
           <Link
             to="about"
             spy={true}
             smooth={true}
             duration={500}
             offset={-80}
-            className="text-gray-300 hover:text-white cursor-pointer vibrate-on-hover"
-            activeClass="text-white font-bold"
+            className="text-gray-900 hover:text-teal-500 cursor-pointer font-semibold"
+            activeClass="text-teal-500 font-bold"
           >
             About
+          </Link>
+          <Link
+            to="quality"
+            spy={true}
+            smooth={true}
+            duration={500}
+            offset={-80}
+            className="text-gray-900 hover:text-teal-500 cursor-pointer font-semibold"
+            activeClass="text-teal-500 font-bold"
+          >
+            Quality
           </Link>
           <Link
             to="skills"
@@ -31,10 +53,10 @@ export default function NavBar() {
             smooth={true}
             duration={500}
             offset={-80}
-            className="text-gray-300 hover:text-white cursor-pointer vibrate-on-hover"
-            activeClass="text-white font-bold"
+            className="text-gray-900 hover:text-teal-500 cursor-pointer font-semibold"
+            activeClass="text-teal-500 font-bold"
           >
-            Skills
+            Skill
           </Link>
           <Link
             to="portfolio"
@@ -42,8 +64,8 @@ export default function NavBar() {
             smooth={true}
             duration={500}
             offset={-80}
-            className="text-gray-300 hover:text-white cursor-pointer vibrate-on-hover"
-            activeClass="text-white font-bold"
+            className="text-gray-900 hover:text-teal-500 cursor-pointer font-semibold"
+            activeClass="text-teal-500 font-bold"
           >
             Portfolio
           </Link>
@@ -53,10 +75,22 @@ export default function NavBar() {
             smooth={true}
             duration={500}
             offset={-80}
-            className="text-gray-300 hover:text-white cursor-pointer vibrate-on-hover"
-            activeClass="text-white font-bold"
+            className="text-gray-900 hover:text-teal-500 cursor-pointer font-semibold"
+            activeClass="text-teal-500 font-bold"
           >
             Contact
+          </Link>
+        </div>
+        <div>
+          <Link
+            to="contact"
+            spy={true}
+            smooth={true}
+            duration={500}
+            offset={-80}
+            className="text-teal-500 py-2 px-4 rounded-full border-2 border-teal-300 hover:bg-teal-600 hover:text-white hover:border-none transition-colors cursor-pointer"
+          >
+            Hire Me
           </Link>
         </div>
         <button
@@ -70,6 +104,18 @@ export default function NavBar() {
       {isOpen && (
         <div className="md:hidden bg-gray-800 border-t border-gray-700">
           <div className="flex flex-col items-center py-4">
+            <Link
+              to="home"
+              spy={true}
+              smooth={true}
+              duration={500}
+              offset={0}
+              className="text-gray-300 hover:text-white py-2 vibrate-on-hover"
+              activeClass="text-white font-bold"
+              onClick={() => setIsOpen(false)}
+            >
+              Home
+            </Link>
             <Link
               to="about"
               spy={true}
@@ -92,7 +138,7 @@ export default function NavBar() {
               activeClass="text-white font-bold"
               onClick={() => setIsOpen(false)}
             >
-              Skills
+              Skill
             </Link>
             <Link
               to="portfolio"
@@ -117,6 +163,17 @@ export default function NavBar() {
               onClick={() => setIsOpen(false)}
             >
               Contact
+            </Link>
+            <Link
+              to="contact"
+              spy={true}
+              smooth={true}
+              duration={500}
+              offset={-80}
+              className="text-white py-2 px-4 rounded-full border-2 border-teal-400 hover:bg-teal-600 transition-colors mt-2"
+              onClick={() => setIsOpen(false)}
+            >
+              Hire Me
             </Link>
           </div>
         </div>

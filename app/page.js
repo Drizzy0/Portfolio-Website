@@ -1,5 +1,7 @@
+"use client";
+import { useState, useEffect } from "react";
 import NavBar from "@/components/NavBar";
-import Hero from "@/components/Hero";
+import HomeSection from "@/components/Home"; 
 import About from "@/components/About";
 import Skills from "@/components/Skills";
 import Portfolio from "@/components/Portfolio";
@@ -7,13 +9,28 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
 export default function Home() {
+  const [showNavBar, setShowNavBar] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > window.innerHeight) {
+        setShowNavBar(true);
+      } else {
+        setShowNavBar(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <>
-      <NavBar />
-      <Hero className="fade-in" />
-      <About className="fade-in delay-1" />
-      <Skills className="fade-in delay-2" />
-      <Portfolio className="fade-in delay-3" />
+      {showNavBar && <NavBar />}
+      <HomeSection />
+      <About />
+      <Skills />
+      <Portfolio />
       <Contact />
       <Footer />
     </>
