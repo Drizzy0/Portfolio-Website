@@ -24,9 +24,16 @@ export default function NavBar({ show }) {
     >
       <div ref={topBarRef} className="p-6">
         <div className="container mx-auto flex justify-between items-center">
-          <div className="text-teal-500 text-xl font-bold vibrate-on-hover">
+          <Link
+            to="home"
+            spy={true}
+            smooth={true}
+            duration={500}
+            offset={-navHeight}
+            className="text-teal-500 text-xl font-bold vibrate-on-hover cursor-pointer"
+          >
             Itoya <span className="text-gray-900">Eromosele</span>
-          </div>
+          </Link>
 
           <div className="hidden md:flex space-x-6 items-center">
             <Link
