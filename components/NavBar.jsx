@@ -1,115 +1,131 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Menu, X } from "lucide-react";
 import { Link } from "react-scroll";
 
-export default function NavBar() {
+export default function NavBar({ show }) {
   const [isOpen, setIsOpen] = useState(false);
+  const navRef = useRef(null);
+  const [navHeight, setNavHeight] = useState(0);
+  const topBarRef = useRef(null);
+
+  useEffect(() => {
+    if (topBarRef.current) {
+      setNavHeight(topBarRef.current.offsetHeight);
+    }
+  }, []);
 
   return (
-    <nav className="sticky top-0 left-0 w-full z-50 bg-white p-6 shadow">
-      <div className="container mx-auto flex justify-between items-center">
-        <div className="text-teal-500 text-xl font-bold vibrate-on-hover">
-          Itoya <span className="text-gray-900">Eromosele</span>
-        </div>
+    <nav
+      ref={navRef}
+      className={`fixed top-0 left-0 w-full z-50 bg-white shadow transition-all duration-300 ${
+        show ? "translate-y-0" : "-translate-y-full"
+      }`}
+    >
+      <div ref={topBarRef} className="p-6">
+        <div className="container mx-auto flex justify-between items-center">
+          <div className="text-teal-500 text-xl font-bold vibrate-on-hover">
+            Itoya <span className="text-gray-900">Eromosele</span>
+          </div>
 
-        <div className="hidden md:flex space-x-6 items-center">
-          <Link
-            to="home"
-            spy={true}
-            smooth={true}
-            duration={500}
-            offset={-80}
-            className="text-gray-900 hover:text-teal-500 cursor-pointer font-semibold"
-            activeClass="text-teal-500 font-bold"
+          <div className="hidden md:flex space-x-6 items-center">
+            <Link
+              to="home"
+              spy={true}
+              smooth={true}
+              duration={500}
+              offset={-navHeight}
+              className="text-gray-900 hover:text-teal-500 cursor-pointer font-semibold"
+              activeClass="text-teal-500 font-bold"
+            >
+              Home
+            </Link>
+            <Link
+              to="about"
+              spy={true}
+              smooth={true}
+              duration={500}
+              offset={-navHeight}
+              className="text-gray-900 hover:text-teal-500 cursor-pointer font-semibold"
+              activeClass="text-teal-500 font-bold"
+            >
+              About
+            </Link>
+            <Link
+              to="quality"
+              spy={true}
+              smooth={true}
+              duration={500}
+              offset={-navHeight}
+              className="text-gray-900 hover:text-teal-500 cursor-pointer font-semibold"
+              activeClass="text-teal-500 font-bold"
+            >
+              Quality
+            </Link>
+            <Link
+              to="skill"
+              spy={true}
+              smooth={true}
+              duration={500}
+              offset={-navHeight}
+              className="text-gray-900 hover:text-teal-500 cursor-pointer font-semibold"
+              activeClass="text-teal-500 font-bold"
+            >
+              Skill
+            </Link>
+            <Link
+              to="services"
+              spy={true}
+              smooth={true}
+              duration={500}
+              offset={-navHeight}
+              className="text-gray-900 hover:text-teal-500 cursor-pointer font-semibold"
+              activeClass="text-teal-500 font-bold"
+            >
+              Services
+            </Link>
+            <Link
+              to="portfolio"
+              spy={true}
+              smooth={true}
+              duration={500}
+              offset={-navHeight}
+              className="text-gray-900 hover:text-teal-500 cursor-pointer font-semibold"
+              activeClass="text-teal-500 font-bold"
+            >
+              Portfolio
+            </Link>
+            <Link
+              to="contact"
+              spy={true}
+              smooth={true}
+              duration={500}
+              offset={-navHeight}
+              className="text-gray-900 hover:text-teal-500 cursor-pointer font-semibold"
+              activeClass="text-teal-500 font-bold"
+            >
+              Contact
+            </Link>
+          </div>
+          <button
+            className="md:hidden text-gray-900"
+            onClick={() => setIsOpen(!isOpen)}
           >
-            Home
-          </Link>
-          <Link
-            to="about"
-            spy={true}
-            smooth={true}
-            duration={500}
-            offset={-80}
-            className="text-gray-900 hover:text-teal-500 cursor-pointer font-semibold"
-            activeClass="text-teal-500 font-bold"
-          >
-            About
-          </Link>
-          <Link
-            to="quality"
-            spy={true}
-            smooth={true}
-            duration={500}
-            offset={-80}
-            className="text-gray-900 hover:text-teal-500 cursor-pointer font-semibold"
-            activeClass="text-teal-500 font-bold"
-          >
-            Quality
-          </Link>
-          <Link
-            to="skill"
-            spy={true}
-            smooth={true}
-            duration={500}
-            offset={-80}
-            className="text-gray-900 hover:text-teal-500 cursor-pointer font-semibold"
-            activeClass="text-teal-500 font-bold"
-          >
-            Skill
-          </Link>
-          <Link
-            to="services"
-            spy={true}
-            smooth={true}
-            duration={500}
-            offset={-80}
-            className="text-gray-900 hover:text-teal-500 cursor-pointer font-semibold"
-            activeClass="text-teal-500 font-bold"
-          >
-            Services
-          </Link>
-          <Link
-            to="portfolio"
-            spy={true}
-            smooth={true}
-            duration={500}
-            offset={-80}
-            className="text-gray-900 hover:text-teal-500 cursor-pointer font-semibold"
-            activeClass="text-teal-500 font-bold"
-          >
-            Portfolio
-          </Link>
-          <Link
-            to="contact"
-            spy={true}
-            smooth={true}
-            duration={500}
-            offset={-80}
-            className="text-gray-900 hover:text-teal-500 cursor-pointer font-semibold"
-            activeClass="text-teal-500 font-bold"
-          >
-            Contact
-          </Link>
+            {isOpen ? <X className="w-8 h-8" /> : <Menu className="w-6 h-6" />}
+          </button>
         </div>
-        <button
-          className="md:hidden text-gray-900"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          {isOpen ? <X className="w-8 h-8" /> : <Menu className="w-6 h-6" />}
-        </button>
       </div>
 
       {isOpen && (
-        <div className="md:hidden bg-white border-t border-gray-700">
+        <div className="md:hidden bg-white border-t border-gray-200">
           <div className="flex flex-col items-center py-4">
             <Link
               to="home"
               spy={true}
               smooth={true}
               duration={500}
-              offset={-80}
-              className="text-gray-900 hover:text-teal-500 py-2 font-semibold"
+              offset={-navHeight}
+              className="text-gray-900 hover:text-teal-500 py-2 font-semibold w-full text-center"
               activeClass="text-teal-500 font-bold"
               onClick={() => setIsOpen(false)}
             >
@@ -120,8 +136,8 @@ export default function NavBar() {
               spy={true}
               smooth={true}
               duration={500}
-              offset={-80}
-              className="text-gray-900 hover:text-teal-500 py-2 font-semibold"
+              offset={-navHeight}
+              className="text-gray-900 hover:text-teal-500 py-2 font-semibold w-full text-center"
               activeClass="text-teal-500 font-bold"
               onClick={() => setIsOpen(false)}
             >
@@ -132,8 +148,8 @@ export default function NavBar() {
               spy={true}
               smooth={true}
               duration={500}
-              offset={-80}
-              className="text-gray-900 hover:text-teal-500 py-2 font-semibold"
+              offset={-navHeight}
+              className="text-gray-900 hover:text-teal-500 py-2 font-semibold w-full text-center"
               activeClass="text-teal-500 font-bold"
               onClick={() => setIsOpen(false)}
             >
@@ -144,8 +160,8 @@ export default function NavBar() {
               spy={true}
               smooth={true}
               duration={500}
-              offset={-80}
-              className="text-gray-900 hover:text-teal-500 py-2 font-semibold"
+              offset={-navHeight}
+              className="text-gray-900 hover:text-teal-500 py-2 font-semibold w-full text-center"
               activeClass="text-teal-500 font-bold"
               onClick={() => setIsOpen(false)}
             >
@@ -156,8 +172,8 @@ export default function NavBar() {
               spy={true}
               smooth={true}
               duration={500}
-              offset={-80}
-              className="text-gray-900 hover:text-teal-500 py-2 font-semibold"
+              offset={-navHeight}
+              className="text-gray-900 hover:text-teal-500 py-2 font-semibold w-full text-center"
               activeClass="text-teal-500 font-bold"
               onClick={() => setIsOpen(false)}
             >
@@ -168,8 +184,8 @@ export default function NavBar() {
               spy={true}
               smooth={true}
               duration={500}
-              offset={-80}
-              className="text-gray-900 hover:text-teal-500 py-2 font-semibold"
+              offset={-navHeight}
+              className="text-gray-900 hover:text-teal-500 py-2 font-semibold w-full text-center"
               activeClass="text-teal-500 font-bold"
               onClick={() => setIsOpen(false)}
             >
@@ -180,8 +196,8 @@ export default function NavBar() {
               spy={true}
               smooth={true}
               duration={500}
-              offset={-80}
-              className="text-gray-900 hover:text-teal-500 py-2 font-semibold"
+              offset={-navHeight}
+              className="text-gray-900 hover:text-teal-500 py-2 font-semibold w-full text-center"
               activeClass="text-teal-500 font-bold"
               onClick={() => setIsOpen(false)}
             >

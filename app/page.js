@@ -14,23 +14,29 @@ import { ArrowUp } from "lucide-react";
 
 export default function Home() {
   const [showNavBar, setShowNavBar] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 0) {
-        setShowNavBar(true);
-      } else {
-        setShowNavBar(false);
-      }
+      const scrollY = window.scrollY;
+
+      setShowNavBar(scrollY > 0);
+
+      setShowScrollTop(scrollY > 150);
     };
 
+    // Add scroll listener
     window.addEventListener("scroll", handleScroll);
+
+    // Initial check
+    handleScroll();
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <>
-      {showNavBar && <NavBar />}
+      <NavBar show={showNavBar} />
       <HomeSection id="home" />
       <About />
       <Quality />
@@ -39,7 +45,7 @@ export default function Home() {
       <Portfolio />
       <Contact />
       <Footer />
-      {showNavBar && (
+      {showScrollTop && (
         <Link
           to="home"
           spy={true}
