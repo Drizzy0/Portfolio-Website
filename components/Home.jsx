@@ -7,7 +7,7 @@ import { Link } from "react-scroll";
 export default function Home({ className }) {
   return (
     <section
-      className={`relative w-full bg-teal-500 text-white flex items-center justify-center min-h-screen ${className}`}
+      className={`relative w-full bg-teal-500 text-white flex items-center justify-center min-h-screen -mt-10 ${className}`}
       id="home"
     >
       <div className="flex flex-col md:flex-row items-center justify-between px-4 sm:px-6 md:px-8 max-w-7xl mx-auto md:gap-16">
@@ -47,7 +47,7 @@ export default function Home({ className }) {
         </div>
       </div>
 
-      <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2">
+      <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2">
         <Link
           to="about"
           spy={true}
