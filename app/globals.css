@@ -40,9 +40,9 @@ html {
   padding: 0;
 }
 
-input:invalid,
-textarea:invalid {
-  border-color: red;
+input.show-validation:invalid,
+textarea.show-validation:invalid {
+  border-color: red !important;
 }
 
 @keyframes fadeIn {

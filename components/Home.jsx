@@ -2,11 +2,13 @@
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
 import { TypeAnimation } from "react-type-animation";
+import { Link } from "react-scroll";
 
 export default function Home({ className }) {
   return (
     <section
-      className={`relative w-full bg-teal-500 text-white py-24 min-h-screen flex items-center justify-center ${className}`}
+      className={`relative w-full bg-teal-500 text-white py-20 min-h-screen flex items-center justify-center ${className}`}
+      id="home"
     >
       <div className="flex flex-col gap-5 md:gap-10 md:flex-row items-center justify-between px-4 sm:px-6 md:px-8 max-w-7xl mx-auto">
         <div className="md:w-1/2 flex justify-center order-1 md:order-2 mb-8 md:mb-0">
@@ -46,7 +48,16 @@ export default function Home({ className }) {
       </div>
 
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-        <ChevronDown className="w-8 h-8 animate-bounce" />
+        <Link
+          to="about"
+          spy={true}
+          smooth={true}
+          duration={500}
+          offset={-80}
+          className="cursor-pointer"
+        >
+          <ChevronDown className="w-8 h-8 animate-bounce" />
+        </Link>
       </div>
     </section>
   );

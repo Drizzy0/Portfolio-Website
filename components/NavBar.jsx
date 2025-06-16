@@ -19,7 +19,7 @@ export default function NavBar() {
             spy={true}
             smooth={true}
             duration={500}
-            offset={0}
+            offset={-80}
             className="text-gray-900 hover:text-teal-500 cursor-pointer font-semibold"
             activeClass="text-teal-500 font-bold"
           >
@@ -48,7 +48,7 @@ export default function NavBar() {
             Quality
           </Link>
           <Link
-            to="skills"
+            to="skill"
             spy={true}
             smooth={true}
             duration={500}
@@ -57,6 +57,17 @@ export default function NavBar() {
             activeClass="text-teal-500 font-bold"
           >
             Skill
+          </Link>
+          <Link
+            to="services"
+            spy={true}
+            smooth={true}
+            duration={500}
+            offset={-80}
+            className="text-gray-900 hover:text-teal-500 cursor-pointer font-semibold"
+            activeClass="text-teal-500 font-bold"
+          >
+            Services
           </Link>
           <Link
             to="portfolio"
@@ -81,20 +92,8 @@ export default function NavBar() {
             Contact
           </Link>
         </div>
-        <div>
-          <Link
-            to="contact"
-            spy={true}
-            smooth={true}
-            duration={500}
-            offset={-80}
-            className="text-teal-500 py-2 px-4 rounded-full border-2 border-teal-300 hover:bg-teal-600 hover:text-white hover:border-none transition-colors cursor-pointer"
-          >
-            Hire Me
-          </Link>
-        </div>
         <button
-          className="md:hidden text-white"
+          className="md:hidden text-gray-900"
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <X className="w-8 h-8" /> : <Menu className="w-6 h-6" />}
@@ -102,16 +101,16 @@ export default function NavBar() {
       </div>
 
       {isOpen && (
-        <div className="md:hidden bg-gray-800 border-t border-gray-700">
+        <div className="md:hidden bg-white border-t border-gray-700">
           <div className="flex flex-col items-center py-4">
             <Link
               to="home"
               spy={true}
               smooth={true}
               duration={500}
-              offset={0}
-              className="text-gray-300 hover:text-white py-2 vibrate-on-hover"
-              activeClass="text-white font-bold"
+              offset={-80}
+              className="text-gray-900 hover:text-teal-500 py-2 font-semibold"
+              activeClass="text-teal-500 font-bold"
               onClick={() => setIsOpen(false)}
             >
               Home
@@ -122,23 +121,47 @@ export default function NavBar() {
               smooth={true}
               duration={500}
               offset={-80}
-              className="text-gray-300 hover:text-white py-2 vibrate-on-hover"
-              activeClass="text-white font-bold"
+              className="text-gray-900 hover:text-teal-500 py-2 font-semibold"
+              activeClass="text-teal-500 font-bold"
               onClick={() => setIsOpen(false)}
             >
               About
             </Link>
             <Link
-              to="skills"
+              to="quality"
               spy={true}
               smooth={true}
               duration={500}
               offset={-80}
-              className="text-gray-300 hover:text-white py-2 vibrate-on-hover"
-              activeClass="text-white font-bold"
+              className="text-gray-900 hover:text-teal-500 py-2 font-semibold"
+              activeClass="text-teal-500 font-bold"
+              onClick={() => setIsOpen(false)}
+            >
+              Quality
+            </Link>
+            <Link
+              to="skill"
+              spy={true}
+              smooth={true}
+              duration={500}
+              offset={-80}
+              className="text-gray-900 hover:text-teal-500 py-2 font-semibold"
+              activeClass="text-teal-500 font-bold"
               onClick={() => setIsOpen(false)}
             >
               Skill
+            </Link>
+            <Link
+              to="services"
+              spy={true}
+              smooth={true}
+              duration={500}
+              offset={-80}
+              className="text-gray-900 hover:text-teal-500 py-2 font-semibold"
+              activeClass="text-teal-500 font-bold"
+              onClick={() => setIsOpen(false)}
+            >
+              Services
             </Link>
             <Link
               to="portfolio"
@@ -146,8 +169,8 @@ export default function NavBar() {
               smooth={true}
               duration={500}
               offset={-80}
-              className="text-gray-300 hover:text-white py-2 vibrate-on-hover"
-              activeClass="text-white font-bold"
+              className="text-gray-900 hover:text-teal-500 py-2 font-semibold"
+              activeClass="text-teal-500 font-bold"
               onClick={() => setIsOpen(false)}
             >
               Portfolio
@@ -158,22 +181,11 @@ export default function NavBar() {
               smooth={true}
               duration={500}
               offset={-80}
-              className="text-gray-300 hover:text-white py-2 vibrate-on-hover"
-              activeClass="text-white font-bold"
+              className="text-gray-900 hover:text-teal-500 py-2 font-semibold"
+              activeClass="text-teal-500 font-bold"
               onClick={() => setIsOpen(false)}
             >
               Contact
-            </Link>
-            <Link
-              to="contact"
-              spy={true}
-              smooth={true}
-              duration={500}
-              offset={-80}
-              className="text-white py-2 px-4 rounded-full border-2 border-teal-400 hover:bg-teal-600 transition-colors mt-2"
-              onClick={() => setIsOpen(false)}
-            >
-              Hire Me
             </Link>
           </div>
         </div>

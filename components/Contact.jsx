@@ -1,17 +1,28 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { User, Mail, MessageSquare, CheckCircle } from "lucide-react";
 
 export default function Contact() {
+  const formRef = useRef(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
-  const [error, setError] = useState(false); 
+  const [error, setError] = useState(false);
+  const [blurred, setBlurred] = useState({
+    name: false,
+    email: false,
+    message: false,
+  });
+  const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setSubmitted(true);
+    if (!formRef.current.checkValidity()) {
+      return;
+    }
     setIsSubmitting(true);
-    setError(false); 
-    setSuccess(false); 
+    setError(false);
+    setSuccess(false);
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
 
@@ -24,12 +35,14 @@ export default function Contact() {
     });
 
     if (!res.ok) {
-      setError(true); 
+      setError(true);
       setSuccess(false);
     } else {
-      setError(false); 
-      setSuccess(true); 
-      e.target.reset(); 
+      setError(false);
+      setSuccess(true);
+      e.target.reset();
+      setSubmitted(false);
+      setBlurred({ name: false, email: false, message: false });
     }
     setIsSubmitting(false);
   };
@@ -45,7 +58,7 @@ export default function Contact() {
           <p className="text-base sm:text-lg text-gray-800 mb-6 text-center">
             Fill out the form below to get in touch.
           </p>
-          <form onSubmit={handleSubmit}>
+          <form ref={formRef} onSubmit={handleSubmit}>
             <div className="mb-4">
               <label htmlFor="name" className="flex items-center text-gray-700">
                 <User className="w-5 h-5 mr-2" />
@@ -55,9 +68,12 @@ export default function Contact() {
                 type="text"
                 id="name"
                 name="name"
-                className="w-full p-2 border border-gray-300 rounded"
+                className={`w-full p-2 rounded border border-black ${
+                  blurred.name || submitted ? "show-validation" : ""
+                }`}
                 required
                 minLength={2}
+                onBlur={() => setBlurred((prev) => ({ ...prev, name: true }))}
               />
             </div>
             <div className="mb-4">
@@ -72,8 +88,11 @@ export default function Contact() {
                 type="email"
                 id="email"
                 name="email"
-                className="w-full p-2 border border-gray-300 rounded"
+                className={`w-full p-2 rounded border border-black ${
+                  blurred.email || submitted ? "show-validation" : ""
+                }`}
                 required
+                onBlur={() => setBlurred((prev) => ({ ...prev, email: true }))}
               />
             </div>
             <div className="mb-4">
@@ -87,10 +106,15 @@ export default function Contact() {
               <textarea
                 id="message"
                 name="message"
-                className="w-full p-2 border border-gray-300 rounded"
+                className={`w-full p-2 rounded border border-black ${
+                  blurred.message || submitted ? "show-validation" : ""
+                }`}
                 rows="4"
                 required
                 minLength={10}
+                onBlur={() =>
+                  setBlurred((prev) => ({ ...prev, message: true }))
+                }
               ></textarea>
             </div>
             <button
