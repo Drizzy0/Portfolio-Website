@@ -68,7 +68,7 @@ export default function Contact() {
                 type="text"
                 id="name"
                 name="name"
-                className={`w-full p-2 rounded border border-black ${
+                className={`w-full p-2 rounded border border-gray-400 ${
                   blurred.name || submitted ? "show-validation" : ""
                 }`}
                 required
@@ -88,7 +88,7 @@ export default function Contact() {
                 type="email"
                 id="email"
                 name="email"
-                className={`w-full p-2 rounded border border-black ${
+                className={`w-full p-2 rounded border border-gray-400 ${
                   blurred.email || submitted ? "show-validation" : ""
                 }`}
                 required
@@ -106,7 +106,7 @@ export default function Contact() {
               <textarea
                 id="message"
                 name="message"
-                className={`w-full p-2 rounded border border-black ${
+                className={`w-full p-2 rounded border border-gray-400 ${
                   blurred.message || submitted ? "show-validation" : ""
                 }`}
                 rows="4"
