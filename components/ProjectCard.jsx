@@ -1,8 +1,27 @@
 import { Eye } from "lucide-react";
+import { useState } from "react";
 
 export default function ProjectCard({ project, onViewClick }) {
+  const [imageError, setImageError] = useState(false);
+
+  const handleImageError = () => {
+    setImageError(true);
+  };
+
   return (
     <div className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+      {imageError ? (
+        <div className="w-full h-48 flex items-center justify-center bg-gray-200 rounded-lg mb-4">
+          <p className="text-gray-500">Image not available</p>
+        </div>
+      ) : (
+        <img
+          src={project.thumbnail}
+          alt={`${project.title} thumbnail`}
+          className="w-full h-48 object-cover rounded-lg mb-4"
+          onError={handleImageError}
+        />
+      )}
       <h3 className="text-xl font-bold mb-2 flex justify-between items-center">
         {project.title}
         <span
