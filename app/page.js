@@ -52,7 +52,7 @@ export default function Home() {
           smooth={true}
           duration={500}
           offset={0}
-          className="fixed bottom-8 right-8 bg-teal-500 text-white p-3 rounded-full shadow-lg hover:bg-teal-600 transition-colors cursor-pointer animate-bounce"
+          className="fixed bottom-8 right-8 bg-teal-500 text-white p-3 rounded-full shadow-lg hover:bg-teal-600 transition-colors cursor-pointer animate-bounce z-50"
         >
           <ArrowUp className="w-6 h-6" />
         </Link>
